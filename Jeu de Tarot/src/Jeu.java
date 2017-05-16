@@ -1,10 +1,12 @@
 
 public class Jeu {
 
-	
-	public static Carte[] init() {
-		Carte paquet[];
-		paquet = new Carte[78];
+	/**
+	 * Initialise le paquet en début de partie
+	 * @return Carte[] paquet
+	 */
+	public static Carte[] initPaquet() {
+		Carte[] paquet = new Carte[78];
 		int i = 0; // compteur
 		// Création des atouts
 		for(i=0; i < 22; i++) {
@@ -24,7 +26,51 @@ public class Jeu {
 			// les carreaux
 			paquet[i] = new Carte(4, j);
 			i++;
-		}		
-		return paquet;		
+		}
+		return paquet;
+	}
+	
+	public static void premiereDistribution(Hand[] hand, Carte[] paquet) {
+		
+		int random;
+		// toute premiere distribution (aléatoire total)
+		for (int j = 0; j < 4; j++) { // On distribue aux 4 joueurs
+			while(hand[j].getNbCartes() != 18) {
+				random = (int) (Math.round(Math.random() * 77));
+				if(!paquet[random].getAEtePiochee()) {
+					hand[j].insererCarte(paquet[random]);
+					paquet[random].setAEtePiochee(true);
+				}			
+			}
+		}
+		
+		//Il reste le chien
+		int j = 0; // indice du chien
+		for (int i =0; i < paquet.length ; i++) {
+			if (!paquet[i].getAEtePiochee()) {
+				hand[4].insererCarte(paquet[i]);
+				j ++;
+			}
+		}
+
+		hand[0].trierCartes();
+		hand[1].trierCartes();
+		hand[2].trierCartes();
+		hand[3].trierCartes();
+		hand[4].trierCartes();
+		
+		// Tout le monde est servi, on reset le paquet car il ne nous sert plus
+		//clean(paquet);
+	}
+	
+	/**
+	 * Le paquet/deck est vidé
+	 * @param Carte[] paquet
+	 * @return Carte[] paquet vidé
+	 */
+	public static void clean(Carte[] paquet) {
+		for (int i = 0; i<paquet.length; i++) {
+			paquet[i] = new Carte(99,0);
+		}
 	}
 }

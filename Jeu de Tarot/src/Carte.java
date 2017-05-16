@@ -17,6 +17,9 @@ public class Carte {
 
 	// la valeur de la carte lors du décompte
 	double valeurCarte;
+	
+	// on regarde si la carte a été piochée (pour la distribution)
+	private boolean aEtePiochee;
 
 	/**
 	 * Constructeur
@@ -27,6 +30,7 @@ public class Carte {
 		this.couleurCarte = couleurCarte;
 		this.numeroCarte = numeroCarte;
 		this.valeurCarte = calculerValeurCarte(numeroCarte, couleurCarte);
+		this.aEtePiochee = false;
 	}
 
 	// Renvoie la couleur de carte
@@ -45,6 +49,16 @@ public class Carte {
 		return valeurCarte;
 	}
 
+	// Renvoie la valeur de aEtePiochee
+	public boolean getAEtePiochee() {
+		return aEtePiochee;
+	}
+	
+	// Setter aEtePiochee
+	public void setAEtePiochee(boolean aEtePiochee) {
+		this.aEtePiochee = aEtePiochee;
+	}
+	
 	/**
 	 * Calcule et renvoie la valeur de la carte
 	 * @param numeroCarte
