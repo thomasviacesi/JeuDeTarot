@@ -42,7 +42,6 @@ public class Carte {
 			case 1: 
 			
 				
-				
 			}
 		}
 		return 
