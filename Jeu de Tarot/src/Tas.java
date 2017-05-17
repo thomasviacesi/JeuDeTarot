@@ -13,6 +13,31 @@ public class Tas {
 			deck[i] = new Carte(99, 0); //on rempli de cartes "vide"
 		}
 		nbCartes = 0;
+	}	
+
+	// Renvoie si une main est vide
+	public boolean estVide() {
+		return this.nbCartes == 0;
+	}
+
+	// getDeck
+	public Carte[] getDeck() {
+		return deck;
+	}
+
+	// setDeck
+	public void setDeck(Carte[] deck) {
+		this.deck = deck;
+	}
+
+	// setNbCartes
+	public void setNbCartes(int nbCartes) {
+		this.nbCartes = nbCartes;
+	}
+
+	// renvoie le nombre de cartes dans la main du joueur
+	public int getNbCartes() {
+		return this.nbCartes;
 	}
 	
 	/**
