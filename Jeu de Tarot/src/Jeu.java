@@ -41,11 +41,7 @@ public class Jeu {
 		// toute premiere distribution (aléatoire total)
 		for (int j = 0; j < 4; j++) { // On distribue aux 4 joueurs
 			while(hand[j].getNbCartes() != 18) {
-				random = (int) (Math.round(Math.random() * 77));
-				if(!paquet[random].getAEtePiochee()) {
-					hand[j].insererCarte(paquet[random]);
-					paquet[random].setAEtePiochee(true);
-				}			
+				// TODO		
 			}
 		}
 		
