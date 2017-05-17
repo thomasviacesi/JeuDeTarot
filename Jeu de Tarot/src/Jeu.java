@@ -30,6 +30,11 @@ public class Jeu {
 		return paquet;
 	}
 	
+	/**
+	 * Toute première distribution, aléatoire au tarot
+	 * @param hand
+	 * @param paquet
+	 */
 	public static void premiereDistribution(Hand[] hand, Carte[] paquet) {
 		
 		int random;
