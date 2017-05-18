@@ -57,7 +57,7 @@ public class Jeu {
 		
 		//Il reste le chien
 		int j = 0; // indice du chien
-		for (int i =0; i < tailleALire ; i++) {
+		for (int i =0; i < tailleALire+1 ; i++) {
 			hand[4].insererCarte(paquet[i]);
 		}
 
