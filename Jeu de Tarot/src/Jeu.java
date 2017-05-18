@@ -37,21 +37,28 @@ public class Jeu {
 	 */
 	public static void premiereDistribution(Hand[] hand, Carte[] paquet) {
 		
-		int random;
+		int random, tailleALire = paquet.length-1;
 		// toute premiere distribution (aléatoire total)
 		for (int j = 0; j < 4; j++) { // On distribue aux 4 joueurs
 			while(hand[j].getNbCartes() != 18) {
-				// TODO		
+				random = (int) (Math.round(Math.random() * tailleALire));
+				hand[j].insererCarte(paquet[random]);
+				// On va maintenant positionner la valeur choisie à la fin du paquet et
+				// décrémenter de 1 la taille à lire du tableau
+				Carte tampon;
+				for (int i = random; i < tailleALire; i++) {
+					tampon = paquet[i];
+					paquet[i] = paquet[i + 1];
+					paquet[i + 1] = tampon;			
+				}
+				tailleALire --;
 			}
 		}
 		
 		//Il reste le chien
 		int j = 0; // indice du chien
-		for (int i =0; i < paquet.length ; i++) {
-			if (!paquet[i].getAEtePiochee()) {
-				hand[4].insererCarte(paquet[i]);
-				j ++;
-			}
+		for (int i =0; i < tailleALire ; i++) {
+			hand[4].insererCarte(paquet[i]);
 		}
 
 		hand[0].trierCartes();
